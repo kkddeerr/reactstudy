@@ -9,9 +9,10 @@ class todoList extends Component {
   //   super(props);
   // }
 
-  id = 1
+  id = 0
+  count = 0
   state = {
-    data : [{ id: 0, todo : 'hihi' } ]
+    data : []
     }
 
   // static getDerivedStateFromProps(nextProps, prevState) { 
@@ -21,35 +22,39 @@ class todoList extends Component {
   // }
 
   shouldComponentUpdate(nextProps, nextState) {
-    console.log("get Data From App.js [shouldComponentUpdate]")
-  
-    return true 
-   
+    console.log("get Data From App.js [shouldComponentUpdate]  " + this.count++)
+    return true
   }
 
   componentDidUpdate(prevProps, prevState){
     const { data } = this.state;
-    console.log(prevState);
-    console.log(this.state);
-    if ( prevState.todo!== this.state.todo) {
+    console.log("pomponentDidUpdate  "    + this.count++)
+    if( prevProps.addTodo !== this.props.addTodo)
     this.setState({
           data: data.concat( { id : this.id++, todo : this.props.addTodo })
         })
-    }
-
-    console.log(JSON.stringify("str" + { data }))    
   }
 
   componentDidMount() {
-    console.log("componentDidMount")
+    console.log("componentDidMount    " + this.count++)
+  }
+
+  deleteTodo = (delId,callbackBoolean) =>  {
+    console.log("deleteTodo    " + delId)
+    const { data } = this.state;
+    if(callbackBoolean === "true") {
+    this.setState({
+      data: data.filter( data => data.id !== delId ) //info => info.id !== id // num => num !== 3
+    })
+    }
   }
   
   render() {
-    console.log("RENDER DONE")
+    console.log("RENDER DONE    " + this.count++)
     const { data } = this.state;
    
     const todoLists = data.map(
-      data => (<TodoData key={data.id} todoData={data}/>)
+      data => (<TodoData key={data.id} todoData={data} isDelete={this.deleteTodo}/>)
     );
 
     return (

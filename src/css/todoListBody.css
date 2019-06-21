@@ -15,7 +15,7 @@ background-color: #22d646;
     
 }
 
-.TodoBody input[type="button"] {
+button {
     height: 46px;
     width: 10%;
     padding: 0;

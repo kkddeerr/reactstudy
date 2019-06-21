@@ -1,33 +1,29 @@
 import React, { Component } from 'react';
 import '../css/todoListBody.css';
 
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
 class todoBody extends Component {
+  state = {
+    todoData : ''
+  }
+  handleChange = (e) => {
+    this.setState({
+      todoData: e.target.value
+    })
+  }
+  
+  addtoDo = (e) => {
+    console.log(e);
+    e.preventDefault();
+    this.props.callbackFromBody(this.state.todoData);
+  }
+
   render() {
     return (
         <div>
-            <input type ="text"></input>
-            <input type ="button" value = "추가"></input>
+            <form onSubmit={this.addtoDo}>
+            <input type ="text" value ={this.state.todoData} onChange={this.handleChange}></input>
+            <button type="submit">추가하기</button>
+            </form>
         </div>
     )
   }

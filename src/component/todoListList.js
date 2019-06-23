@@ -44,8 +44,18 @@ class todoList extends Component {
     const { data } = this.state;
     if(callbackBoolean === "true") {
     this.setState({
-      data: data.filter( data => data.id !== delId ) //info => info.id !== id // num => num !== 3
+      data: data.filter( data => data.id !== delId ) 
     })
+    }
+  }
+
+  updateTodo = (delId,uptodo) => {
+    console.log("updateTodo    " + delId)
+    const { data } = this.state;
+    if(callbackBoolean === "true") {
+      this.setState({
+        data: data.map( data => data.id === delId ? ({...data, todo: uptodo }) ) 
+      })
     }
   }
   
@@ -54,7 +64,7 @@ class todoList extends Component {
     const { data } = this.state;
    
     const todoLists = data.map(
-      data => (<TodoData key={data.id} todoData={data} isDelete={this.deleteTodo}/>)
+      data => (<TodoData key={data.id} todoData={data} isDelete={this.deleteTodo} updateTodo = {this.updateTodo}/>)
     );
 
     return (

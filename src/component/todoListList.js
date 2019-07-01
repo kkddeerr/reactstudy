@@ -50,13 +50,11 @@ class todoList extends Component {
   }
 
   updateTodo = (delId,uptodo) => {
-    console.log("updateTodo    " + delId)
+    console.log("updateTodo    " + delId);
     const { data } = this.state;
-    if(callbackBoolean === "true") {
       this.setState({
-        data: data.map( data => data.id === delId ? ({...data, todo: uptodo }) ) 
+        data: data.map( data => data.id === delId ? ({...data, todo: uptodo }) : data ) 
       })
-    }
   }
   
   render() {

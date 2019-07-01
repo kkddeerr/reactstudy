@@ -1,8 +1,9 @@
 .TodoListData{
-    width:99.5%;
-    height:35px;
+    width:78.7%;
+    height:44px;
     font-size : 1.5em;
     border: 2px solid #585c1d;
     background-color: #dba769;
     text-align: center;
+    display: inline-block;
     }

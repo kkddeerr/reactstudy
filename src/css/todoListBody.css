@@ -1,24 +1,24 @@
 .TodoBody {
 width:100%;
 height:50px;
-font-size : 2em;
 font-style: italic;
 background-color: #22d646;
 }
 
 .TodoBody input[type="text"] {
-    height: 46px;
+    height: 48px;
     width: 88.5%;
-    padding: 0;
     border : 1px solid #22d646;
     display: inline-block;
     
 }
 
 button {
-    height: 46px;
+    margin: 0;
+    height: 48px;
     width: 10%;
     padding: 0;
     border : 1px solid #22d646;
     display: inline-block;
+    font-size : 11px;
 }
